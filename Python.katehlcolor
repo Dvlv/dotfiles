@@ -1,0 +1,45 @@
+[Highlighting Python - Schema awesome2]
+Alerts:Alert Level 1=10,ffe85848,ffe85848,0,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 2=10,ffc28d22,ffc28d22,0,0,0,0,ff451e1a,,,---
+Alerts:Alert Level 3=10,ff75a942,ff75a942,0,0,0,0,,,,---
+Alerts:Normal Text=0,ff1f1c1b,ffffffff,0,0,0,0,,,,---
+Alerts:Region Marker=25,ff0057ae,ff00316e,0,0,0,0,ffe0e9f8,,,---
+Alerts_indent:Normal Text=0,ff1f1c1b,ffffffff,0,0,0,0,,,,---
+Modelines:Comment=8,ffcbcb98,ff27ae60,0,0,0,0,,,,---
+Modelines:Keyword=1,ff1f1c1b,ffffffff,1,0,0,0,,,,---
+Modelines:Number=3,ff2980b9,fffdbc4b,0,0,0,0,,,,---
+Modelines:Option OFF=9,ff2980b9,fffdbc4b,0,0,0,0,,,,---
+Modelines:Option ON=9,ff2980b9,fffdbc4b,0,0,0,0,,,,---
+Modelines:String=7,ff0095ff,ffeff0f1,1,0,0,0,,,,---
+Modelines:Value=9,ff2980b9,fffdbc4b,0,0,0,0,,,,---
+Modelines:Variable=11,ff3daee9,fffcfcfc,0,0,0,0,,,,---
+Python:Builtin Function=2,ff644a9b,ff452886,0,0,0,0,,,,---
+Python:Comment=8,ff817a7a,ff27ae60,0,0,0,0,,,,---
+Python:Complex=9,ff2980b9,fffdbc4b,0,0,0,0,,,,---
+Python:Decorator=9,ff8f6b32,ff8f6b32,0,0,0,0,,,,---
+Python:Definition Keyword=1,ff1f1c1b,ffffffff,1,0,0,0,,,,---
+Python:Error=30,ffbf0303,ff9c0e0e,0,0,0,1,,,,---
+Python:Exceptions=9,ff277733,ff277733,1,0,0,0,,,,---
+Python:Extensions=9,ff0095ff,ff0095ff,1,0,0,0,,,,---
+Python:F-String=14,ffda4453,ffda4453,0,0,0,0,,,,---
+Python:Float=5,ffacacad,ffeff0f1,0,0,0,0,,,,---
+Python:Flow Control Keyword=1,ff1f1c1b,ffffffff,1,0,0,0,,,,---
+Python:Hex=4,ff818182,ffeff0f1,1,0,0,0,,,,---
+Python:Import=15,ffe59900,ffbdc3c7,0,0,0,0,,,,---
+Python:Int=3,ff2980b9,fffdbc4b,0,0,0,0,,,,---
+Python:Normal Text=0,ff1f1c1b,ffffffff,0,0,0,0,,,,---
+Python:Octal=4,ff818182,ffeff0f1,1,0,0,0,,,,---
+Python:Operator=0,ff1f1c1b,ffffffff,1,0,0,0,,,,---
+Python:Operator Keyword=1,ff1f1c1b,ffffffff,1,0,0,0,,,,---
+Python:Overloaders=9,ff3c4ae1,ff3c4ae1,1,0,0,0,,,,---
+Python:Raw F-String=13,ffda4453,ffda4453,0,0,0,0,,,,---
+Python:Raw String=7,ff0095ff,ffeff0f1,1,0,0,0,,,,---
+Python:Special Variable=9,ff55007f,fffdbc4b,1,0,0,0,,,,---
+Python:String=7,ffaa0000,ffeff0f1,1,0,0,0,,,,---
+Python:String Char=6,ff7f8c8d,ffbdc3c7,0,0,0,0,,,,---
+Python:String Substitution=9,ff166bd4,ff166bd4,0,0,0,0,,,,---
+
+[KateHLColors]
+full schema=false
+highlight=Python
+schema=awesome2

@@ -1,0 +1,30 @@
+$COMPLETIONS_CONFIRM=True
+$XONSH_COLOR_STYLE='fruity'
+
+import os
+$AUTOJUMP_DIR = os.path.join($HOME, 'Downloads/autojump-xonsh-master')
+source @(os.path.join($AUTOJUMP_DIR, 'autojump.xsh'))
+
+def eg_complete(prefix, line, begidx, endidx, ctx):
+    eg_commands = ['add','branch', 'checkout', 'finished', 'log', 'merge', 'new', 
+                   'origin', 'refresh', 'reject', 'revert', 'stat', 'tag', 'tostg','unadd', 'uncommit']
+    possibilities = []
+    if line.startswith(('eg checkout', 'eg chekcout', 'eg merge')):
+        git_branches = $(git branch --no-color 2>/dev/null | sed 's/^..//')
+        git_branches_list = git_branches.split('\n')
+        branch_possibilities = []
+        for branch in git_branches_list:
+            if branch.startswith(prefix):
+                branch_possibilities.append(branch)
+        cmd_beginning = "".join(line.split()[:-1])
+        return ({poss for poss in branch_possibilities}, len(prefix))
+    elif len(line) > begidx:
+        if line[:begidx].split()[-1] == 'eg':
+            for cmd in eg_commands:
+                if cmd.startswith(prefix):
+                    possibilities.append(cmd)
+            return ({'eg ' + poss for poss in possibilities}, len('eg ') + len(prefix))
+#        elif line == 'eg ':
+#            return {'add', 'branch', 'checkout', 'finished', 'log', 'merge', 'new', 'origin', 'pr', 'refresh', 'reject', 'revert', 'stat', 'tag', 'tostg', 'unadd', 'uncommit'} 
+
+completer add eg eg_complete
