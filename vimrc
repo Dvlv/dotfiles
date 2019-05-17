@@ -58,6 +58,7 @@ map <C-b> :buffers<CR>
 cnoreabbrev sem SemanticHighlight
 
 let g:semanticTermColors = [28,22,1,3,4,5,6,25,9,13,53,99,160,161,107,104,127,88,21,58,94]
+let g:ctrlp_map = '<C-S-q>'
 
 autocmd! bufwritepost .vimrc source %
 autocmd VimEnter * SemanticHighlight
