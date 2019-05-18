@@ -39,9 +39,9 @@ endif
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 "set showcmd		" Show (partial) command in status line.
-"set showmatch		" Show matching brackets.
+set showmatch		" Show matching brackets.
 "set ignorecase		" Do case insensitive matching
-"set smartcase		" Do smart case matching
+set smartcase		" Do smart case matching
 "set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
 "set hidden		" Hide buffers when they are abandoned
@@ -59,6 +59,7 @@ cnoreabbrev sem SemanticHighlight
 
 let g:semanticTermColors = [28,22,1,3,4,5,6,25,9,13,53,99,160,161,107,104,127,88,21,58,94]
 let g:ctrlp_map = '<C-S-q>'
+let g:dutyl_neverAddClosingParen=1
 
 autocmd! bufwritepost .vimrc source %
 autocmd VimEnter * SemanticHighlight
@@ -70,6 +71,15 @@ set number
 set t_Co=256
 set background=light
 colorscheme unicon
+
 execute pathogen#infect()
+call dutyl#register#tool('dcd-server','/run/user/1000/dcd.socket')
 syntax on
 filetype plugin indent on
+
+
+
+
+
+" Plugin list: dutyl, unicon, ctrlP, semantic-highlight, ack, pathogen
+
