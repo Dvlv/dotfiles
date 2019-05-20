@@ -66,8 +66,6 @@ autocmd! bufwritepost .vimrc source %
 autocmd VimEnter * SemanticHighlight
 autocmd InsertLeave * SemanticHighlight
 
-autocmd BufWritePost *.py !/home/Dvlv/Work/flexpath/env/bin/black %
-
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set relativenumber
 set number
