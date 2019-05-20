@@ -57,7 +57,7 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-b> :buffers<CR>
 cnoreabbrev sem SemanticHighlight
 
-let g:semanticTermColors = [205, 170, 136, 129, 98, 88, 64, 34, 30, 17, 5, 3, 6, 1, 54, 100]
+let g:semanticTermColors = [205, 170, 136, 129, 98, 88, 64, 34, 30, 17, 5, 3, 6, 1, 54, 100, 91, 107, 125, 142, 181]
 let g:semanticGUIColors = ["#ff6600", "#705598", "#6da741", "#b00b0b"]
 let g:ctrlp_map = '<C-S-q>'
 let g:dutyl_neverAddClosingParen=1
