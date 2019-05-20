@@ -57,13 +57,16 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-b> :buffers<CR>
 cnoreabbrev sem SemanticHighlight
 
-let g:semanticTermColors = [28,22,1,3,4,5,6,25,9,13,53,99,160,161,107,104,127,88,21,58,94]
+let g:semanticTermColors = [205, 170, 136, 129, 98, 88, 64, 34, 30, 17, 5, 3, 6, 1, 54, 100]
+let g:semanticGUIColors = ["#ff6600", "#705598", "#6da741", "#b00b0b"]
 let g:ctrlp_map = '<C-S-q>'
 let g:dutyl_neverAddClosingParen=1
 
 autocmd! bufwritepost .vimrc source %
 autocmd VimEnter * SemanticHighlight
 autocmd InsertLeave * SemanticHighlight
+
+autocmd BufWritePost *.py !/home/Dvlv/Work/flexpath/env/bin/black %
 
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set relativenumber
@@ -73,7 +76,7 @@ set background=light
 colorscheme unicon
 
 execute pathogen#infect()
-call dutyl#register#tool('dcd-server','/run/user/1000/dcd.socket')
+"call dutyl#register#tool('dcd-server','/run/user/1000/dcd.socket')
 syntax on
 filetype plugin indent on
 
