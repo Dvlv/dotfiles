@@ -56,6 +56,7 @@ map <C-f> :LAck! --ignore-dir env --ignore-dir env3.6 --ignore-dir env3.7
 map <C-n> :NERDTreeToggle<CR>
 map <C-b> :buffers<CR>
 cnoreabbrev sem SemanticHighlight
+cnoreabbrev semr SemanticHighlightRevert
 
 let g:semanticTermColors = [205, 170, 136, 129, 98, 88, 64, 34, 30, 17, 5, 3, 6, 1, 54, 100, 91, 107, 125, 142, 181]
 let g:semanticGUIColors = ["#ff6600", "#705598", "#6da741", "#b00b0b"]
@@ -63,8 +64,20 @@ let g:ctrlp_map = '<C-S-q>'
 let g:dutyl_neverAddClosingParen=1
 
 autocmd! bufwritepost .vimrc source %
-autocmd VimEnter * SemanticHighlight
-autocmd InsertLeave * SemanticHighlight
+autocmd VimEnter *.md,*.rst,*.txt let b:dontsem=1
+
+fun! MaybeSem()
+    if exists('b:dontsem')
+        return
+    endif
+    SemanticHighlight
+endfun
+
+autocmd VimEnter * call MaybeSem()
+autocmd InsertLeave * call MaybeSem()
+"autocmd InsertLeave * SemanticHighlight
+
+autocmd BufWritePost /home/Dvlv/Work/flexpath/**/*.py !/home/Dvlv/Work/flexpath/env/bin/black %
 
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set relativenumber
