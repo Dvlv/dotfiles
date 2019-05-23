@@ -77,6 +77,8 @@ autocmd VimEnter * call MaybeSem()
 autocmd InsertLeave * call MaybeSem()
 "autocmd InsertLeave * SemanticHighlight
 
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set relativenumber
 set number
