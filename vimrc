@@ -52,6 +52,7 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 nmap - $
+map <C-s> :w<CR>
 map <C-f> :LAck! --ignore-dir env --ignore-dir env3.6 --ignore-dir env3.7 
 map <C-n> :NERDTreeToggle<CR>
 map <C-b> :buffers<CR>
