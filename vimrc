@@ -77,8 +77,6 @@ autocmd VimEnter * call MaybeSem()
 autocmd InsertLeave * call MaybeSem()
 "autocmd InsertLeave * SemanticHighlight
 
-autocmd BufWritePost /home/Dvlv/Work/flexpath/**/*.py !/home/Dvlv/Work/flexpath/env/bin/black %
-
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set relativenumber
 set number
