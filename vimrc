@@ -52,8 +52,9 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 nmap - $
+nmap <C-t> <C-]>
 map <C-s> :w<CR>
-map <C-f> :LAck! --ignore-dir env --ignore-dir env3.6 --ignore-dir env3.7 
+map <C-f> :LAck! --ignore-dir env --ignore-dir env3.6 --ignore-dir env3.7 --ignore-dir htmlcov --ignore-file=is:tags -Q ""<left>
 map <C-n> :NERDTreeToggle<CR>
 map <C-b> :buffers<CR>
 cnoreabbrev sem SemanticHighlight
@@ -65,10 +66,13 @@ let g:ctrlp_map = '<C-S-q>'
 let g:dutyl_neverAddClosingParen=1
 
 autocmd! bufwritepost .vimrc source %
-autocmd VimEnter *.md,*.rst,*.txt let b:dontsem=1
+autocmd VimEnter *.md,*.rst,*.txt,*.html,*.jinja let b:dontsem=1
 
 fun! MaybeSem()
     if exists('b:dontsem')
+        return
+    endif
+    if &ft =~ 'markdown\|html\|text'
         return
     endif
     SemanticHighlight
@@ -78,6 +82,16 @@ autocmd VimEnter * call MaybeSem()
 autocmd InsertLeave * call MaybeSem()
 "autocmd InsertLeave * SemanticHighlight
 
+
+"let g:ale_lint_on_insert_leave=1
+"let g:ale_fixers = ["black"]
+"let g:ale_fix_on_save=1
+
+"let g:airline#extensions#ale#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline_theme='papercolor'
+
+
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -85,6 +99,8 @@ set relativenumber
 set number
 set t_Co=256
 set background=light
+set hidden
+set nomodeline
 colorscheme unicon
 
 execute pathogen#infect()
@@ -96,5 +112,6 @@ filetype plugin indent on
 
 
 
-" Plugin list: dutyl, unicon, ctrlP, semantic-highlight, ack, pathogen
+" Plugin list: dutyl, unicon, ctrlP, semantic-highlight, ack, pathogen,
+" vim-airline, vim-airline-themes, ale
 
