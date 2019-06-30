@@ -59,8 +59,11 @@ map <C-b> :buffers<CR>
 cnoreabbrev sem SemanticHighlight
 cnoreabbrev semr SemanticHighlightRevert
 
-let g:semanticTermColors = [205, 170, 136, 129, 98, 88, 64, 34, 30, 17, 5, 3, 6, 1, 54, 100, 91, 107, 125, 142, 181]
-let g:semanticGUIColors = ["#ff6600", "#705598", "#6da741", "#b00b0b"]
+
+let g:semanticTermColors = [1, 3, 5, 6, 17, 30, 34, 54, 64, 88, 91, 98, 100, 107, 125, 129, 136, 142, 145, 148, 166, 170, 181, 202, 205]
+let g:semanticGUIColors = ["#800000", "#808000", "#800080","#008080", "#00005f", "#008787", "#00af00", "#5f0087", "#5f8700", "#870000", "#8700af",
+            \ "#875fd7", "#878700", "#87af5f", "#af005f", "#af00ff", "#af8700", "#afaf00", "#afafaf", "#afd700", "#d75f00", "#d75fd7", 
+            \ "#d7afaf", "#ff5f00", "#ff5faf", "#ff6600", "#705598", "#6da741"]
 let g:ctrlp_map = '<C-S-q>'
 let g:dutyl_neverAddClosingParen=1
 
