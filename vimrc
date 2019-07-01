@@ -66,6 +66,9 @@ let g:semanticGUIColors = ["#800000", "#808000", "#800080","#008080", "#00005f",
             \ "#875fd7", "#878700", "#87af5f", "#af005f", "#af00ff", "#af8700", "#afaf00", "#afafaf", "#afd700", "#d75f00", "#d75fd7", 
             \ "#d7afaf", "#ff5f00", "#ff5faf", "#ff6600", "#705598", "#6da741"]
 let g:ctrlp_map = '<C-S-q>'
+let g:ctrlp_path_nolim=1
+let g:ctrlp_path_sort=1
+let g:ctrlp_max_files=0
 let g:dutyl_neverAddClosingParen=1
 
 autocmd! bufwritepost .vimrc source %
