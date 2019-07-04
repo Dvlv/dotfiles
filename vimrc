@@ -54,7 +54,7 @@ endif
 nmap - $
 nmap <C-t> <C-]>
 map <C-s> :w<CR>
-map <C-f> :LAck! --ignore-dir env --ignore-dir env3.6 --ignore-dir env3.7 --ignore-dir htmlcov --ignore-file=is:tags -Q ""<left>
+map <C-f> :LAck! -Q ""<left>
 map <C-n> :NERDTreeToggle<CR>
 map <C-b> :buffers<CR>
 cnoreabbrev sem SemanticHighlight
