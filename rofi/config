@@ -1,0 +1,5 @@
+rofi.theme: /usr/share/rofi/themes/flat-orange2.rasi
+rofi.locale: "en_GB"
+rofi.terminal: konsole
+rofi.ssh-client: ssh
+rofi.ssh-command: yakuake -e ssh {host}
