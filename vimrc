@@ -52,7 +52,14 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 nmap - $
+nmap m ]m
 nmap <C-t> <C-]>
+nmap <Left> <nop>
+nmap <Right> <nop>
+nmap <Up> <nop>
+nmap <Down> <nop>
+
+
 map <C-s> :w<CR>
 map <C-f> :LAck! -Q ""<left>
 map <C-n> :NERDTreeToggle<CR>
@@ -60,15 +67,13 @@ map <C-b> :buffers<CR>
 cnoreabbrev sem SemanticHighlight
 cnoreabbrev semr SemanticHighlightRevert
 
-
-let g:semanticTermColors = [1, 3, 5, 6, 17, 30, 34, 54, 64, 88, 91, 98, 100, 107, 125, 129, 136, 142, 145, 148, 166, 170, 181, 202, 205]
-let g:semanticGUIColors = ["#800000", "#808000", "#800080","#008080", "#00005f", "#008787", "#00af00", "#5f0087", "#5f8700", "#870000", "#8700af",
-            \ "#875fd7", "#878700", "#87af5f", "#af005f", "#af00ff", "#af8700", "#afaf00", "#afafaf", "#afd700", "#d75f00", "#d75fd7", 
-            \ "#d7afaf", "#ff5f00", "#ff5faf", "#ff6600", "#705598", "#6da741"]
+let g:semanticTermColors = [1, 3, 5, 6, 17, 30, 34, 54, 64, 88, 91, 98, 100, 107, 125, 129, 136, 142, 170, 181, 205]
+let g:semanticGUIColors = ['#800000', '#808000', '#800080', '#008080', '#00005f', '#008787', '#00af00', '#5f0087', '#5f8700', '#870000', '#8700af', '#875fd7', '#878700', '#87af5f', '#af005f', '#af00ff', '#af8700', '#afaf00', '#d75fd7', '#d7afaf', '#ff5faf']
 let g:ctrlp_map = '<C-S-q>'
 let g:ctrlp_path_nolim=1
 let g:ctrlp_path_sort=1
 let g:ctrlp_max_files=0
+let ctrlp_custom_ignore='env\|env3.7\|node_modules\|tags\|flyway*\|htmlcov\|__pycache__'
 let g:dutyl_neverAddClosingParen=1
 
 autocmd! bufwritepost .vimrc source %
@@ -86,17 +91,22 @@ endfun
 
 autocmd VimEnter * call MaybeSem()
 autocmd InsertLeave * call MaybeSem()
+
 "autocmd InsertLeave * SemanticHighlight
 
 
-"let g:ale_lint_on_insert_leave=1
-"let g:ale_fixers = ["black"]
-"let g:ale_fix_on_save=1
+let g:ale_lint_on_insert_leave=1
+let g:ale_fixers = ["black"]
+let g:ale_fix_on_save=1
+let g:ale_virtualenv_dir_names = ["env"]
+let g:ale_python_pylint_options = "--init-hook='import sys; sys.path.append(\".\")'"
 
-"let g:airline#extensions#ale#enabled = 1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline_theme='papercolor'
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='papercolor'
 
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,htmldjango EmmetInstall
 
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
@@ -114,6 +124,7 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+autocmd FileType python setlocal completeopt-=preview
 
 
 
