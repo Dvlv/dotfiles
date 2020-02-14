@@ -67,7 +67,7 @@ map <C-b> :buffers<CR>
 cnoreabbrev sem SemanticHighlight
 cnoreabbrev semr SemanticHighlightRevert
 
-let g:semanticTermColors = [1, 3, 5, 6, 17, 30, 34, 54, 64, 88, 91, 98, 100, 107, 125, 129, 136, 142, 170, 181, 205]
+let g:semanticTermColors = [1, 2, 3, 5, 6, 17, 22, 30, 34, 52, 54, 58, 64, 66, 88, 91, 98, 100, 102, 107, 125, 129, 136, 142, 170, 178, 181, 205, 242]
 let g:semanticGUIColors = ['#800000', '#808000', '#800080', '#008080', '#00005f', '#008787', '#00af00', '#5f0087', '#5f8700', '#870000', '#8700af', '#875fd7', '#878700', '#87af5f', '#af005f', '#af00ff', '#af8700', '#afaf00', '#d75fd7', '#d7afaf', '#ff5faf']
 let g:ctrlp_map = '<C-S-q>'
 let g:ctrlp_path_nolim=1
@@ -93,13 +93,6 @@ autocmd VimEnter * call MaybeSem()
 autocmd InsertLeave * call MaybeSem()
 
 "autocmd InsertLeave * SemanticHighlight
-
-
-let g:ale_lint_on_insert_leave=1
-let g:ale_fixers = ["black"]
-let g:ale_fix_on_save=1
-let g:ale_virtualenv_dir_names = ["env"]
-let g:ale_python_pylint_options = "--init-hook='import sys; sys.path.append(\".\")'"
 
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -130,5 +123,5 @@ autocmd FileType python setlocal completeopt-=preview
 
 
 " Plugin list: dutyl, unicon, ctrlP, semantic-highlight, ack, pathogen,
-" vim-airline, vim-airline-themes, ale
+" vim-airline, vim-airline-themes, ale, emmet, jedi
 
