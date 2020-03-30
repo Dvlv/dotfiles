@@ -8,6 +8,11 @@ Plug 'jaxbot/semantic-highlight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mileszs/ack.vim'
+Plug 'ObserverOfTime/coloresque.vim'
+Plug 'tpope/vim-surround'
+Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'unblevable/quick-scope'
 
 call plug#end()
 
@@ -49,11 +54,10 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <silent> <C-t> <Plug>(coc-definition)
+nmap <C-t> <Plug>(coc-definition)
 
 nmap - $
 nmap m ]m
-nmap <C-t> <C-]>
 nmap <Left> <nop>
 nmap <Right> <nop>
 nmap <Up> <nop>
@@ -62,7 +66,7 @@ nmap <Down> <nop>
 map <C-b> :buffers<CR>
 map <C-f> :LAck! -Q ""<left>
 
-autocmd VimEnter *.md,*.rst,*.txt,*.html,*.jinja let b:dontsem=1
+"autocmd VimEnter *.md,*.rst,*.txt,*.html,*.jinja let b:dontsem=1
 
 fun! MaybeSem()
     if exists('b:dontsem')
@@ -74,8 +78,6 @@ fun! MaybeSem()
     SemanticHighlight
 endfun
 
-autocmd VimEnter * call MaybeSem()
-autocmd InsertLeave * call MaybeSem()
 
 let g:deoplete#auto_complete_delay = 100
 
@@ -83,4 +85,16 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='papercolor'
 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
