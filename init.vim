@@ -23,6 +23,8 @@ set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+set undodir=~/.vim/undo-dir
+set undofile
 
 set nohlsearch
 set smartcase
@@ -54,6 +56,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> ge <Plug>(coc-diagnostic-next-error)
 nmap <C-t> <Plug>(coc-definition)
 
 nmap - $
@@ -65,6 +68,7 @@ nmap <Down> <nop>
 
 map <C-b> :buffers<CR>
 map <C-f> :LAck! -Q ""<left>
+map <C-i> :bn<CR>
 
 "autocmd VimEnter *.md,*.rst,*.txt,*.html,*.jinja let b:dontsem=1
 
