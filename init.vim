@@ -13,6 +13,7 @@ Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'unblevable/quick-scope'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -43,6 +44,7 @@ colorscheme unicon
 cnoreabbrev sem SemanticHighlight
 cnoreabbrev semr SemanticHighlightRevert
 
+let g:coc_disable_startup_warning = 1
 let g:Hexokinase_highlighters = ['backgroundfull']
 let g:semanticTermColors = [1, 2, 3, 5, 6, 17, 22, 30, 34, 52, 54, 58, 64, 66, 88, 91, 98, 100, 102, 107, 125, 129, 136, 142, 170, 178, 181, 205, 242]
 let g:semanticGUIColors = ['#800000', '#808000', '#800080', '#008080', '#00005f', '#008787', '#00af00', '#5f0087', '#5f8700', '#870000', '#8700af', '#875fd7', '#878700', '#87af5f', '#af005f', '#af00ff', '#af8700', '#afaf00', '#d75fd7', '#d7afaf', '#ff5faf']
@@ -57,6 +59,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> ge <Plug>(coc-diagnostic-next-error)
+nmap <C-s> :call CocAction('jumpDefinition', 'split')<CR>
 nmap <C-t> <Plug>(coc-definition)
 
 nmap - $
