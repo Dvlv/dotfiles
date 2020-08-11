@@ -1,0 +1,7 @@
+{
+    "python.jediPath": "/usr/lib/python3.6/site-packages/jedi",
+    "python.formatting.provider": "black",
+    "coc.preferences.formatOnSaveFiletypes": ["python"],
+    "coc.preferences.formatOnType": true,
+    "emmet.includeLanguages": {"htmldjango": "html"}
+}
