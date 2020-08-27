@@ -14,6 +14,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-fugitive'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -44,6 +45,8 @@ colorscheme unicon
 cnoreabbrev sem SemanticHighlight
 cnoreabbrev semr SemanticHighlightRevert
 
+let mapleader = ","
+
 let g:coc_disable_startup_warning = 1
 let g:Hexokinase_highlighters = ['backgroundfull']
 let g:semanticTermColors = [1, 2, 3, 5, 6, 17, 22, 30, 34, 52, 54, 58, 64, 66, 88, 91, 98, 100, 102, 107, 125, 129, 136, 142, 170, 178, 181, 205, 242]
@@ -72,6 +75,12 @@ nmap <Down> <nop>
 map <C-b> :buffers<CR>
 map <C-f> :LAck! -Q ""<left>
 map <C-i> :bn<CR>
+
+"Easymotion
+nmap s <Plug>(easymotion-overwin-f)
+nmap <leader>j <Plug>(easymotion-j)
+nmap <leader>k <Plug>(easymotion-k)
+nmap <leader>w <Plug>(easymotion-w)
 
 "autocmd VimEnter *.md,*.rst,*.txt,*.html,*.jinja let b:dontsem=1
 
