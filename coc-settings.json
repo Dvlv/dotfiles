@@ -3,5 +3,9 @@
     "python.formatting.provider": "black",
     "coc.preferences.formatOnSaveFiletypes": ["python"],
     "coc.preferences.formatOnType": true,
-    "emmet.includeLanguages": {"htmldjango": "html"}
+    "emmet.includeLanguages": {"htmldjango": "html"},
+    "typescript.format.enabled": true,
+    "javascript.format.enabled": true,
+    "eslint.autoFixOnSave": true,
+    "json.format.enable": true
 }
