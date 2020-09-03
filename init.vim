@@ -82,7 +82,13 @@ nmap <leader>j <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
 nmap <leader>w <Plug>(easymotion-w)
 
-"autocmd VimEnter *.md,*.rst,*.txt,*.html,*.jinja let b:dontsem=1
+:autocmd FileType javascript vnoremap <buffer> <leader>c :norm I//<cr>
+:autocmd FileType typescript vnoremap <buffer> <leader>c :norm I//<cr>
+:autocmd FileType python     vnoremap <buffer> <leader>c :norm I#<cr>
+
+:autocmd FileType javascript vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
+:autocmd FileType typescript vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
+:autocmd FileType python     vnoremap <buffer> <leader><leader>c :norm ^x<cr>
 
 fun! MaybeSem()
     if exists('b:dontsem')
@@ -93,7 +99,6 @@ fun! MaybeSem()
     endif
     SemanticHighlight
 endfun
-
 
 let g:deoplete#auto_complete_delay = 100
 
