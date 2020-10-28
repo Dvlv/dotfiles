@@ -8,13 +8,15 @@ Plug 'jaxbot/semantic-highlight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mileszs/ack.vim'
-Plug 'ObserverOfTime/coloresque.vim'
 Plug 'tpope/vim-surround'
 Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-fugitive'
 Plug 'easymotion/vim-easymotion'
+Plug 'chrisbra/Colorizer'
 
 call plug#end()
 
@@ -29,6 +31,7 @@ set undodir=~/.vim/undo-dir
 set undofile
 
 set nohlsearch
+set ignorecase
 set smartcase
 set showmatch
 set list
@@ -47,11 +50,15 @@ cnoreabbrev semr SemanticHighlightRevert
 
 let mapleader = ","
 
+" https://jonasjacek.github.io/colors/
+
 let g:coc_disable_startup_warning = 1
-let g:Hexokinase_highlighters = ['backgroundfull']
+
 let g:semanticTermColors = [1, 2, 3, 5, 6, 17, 22, 30, 34, 52, 54, 58, 64, 66, 88, 91, 98, 100, 102, 107, 125, 129, 136, 142, 170, 178, 181, 205, 242]
 let g:semanticGUIColors = ['#800000', '#808000', '#800080', '#008080', '#00005f', '#008787', '#00af00', '#5f0087', '#5f8700', '#870000', '#8700af', '#875fd7', '#878700', '#87af5f', '#af005f', '#af00ff', '#af8700', '#afaf00', '#d75fd7', '#d7afaf', '#ff5faf']
 
+let g:colorizer_auto_filetype='css,html,scss,sass,less'
+let g:colorizer_startup=0
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -82,13 +89,34 @@ nmap <leader>j <Plug>(easymotion-j)
 nmap <leader>k <Plug>(easymotion-k)
 nmap <leader>w <Plug>(easymotion-w)
 
-:autocmd FileType javascript vnoremap <buffer> <leader>c :norm I//<cr>
-:autocmd FileType typescript vnoremap <buffer> <leader>c :norm I//<cr>
-:autocmd FileType python     vnoremap <buffer> <leader>c :norm I#<cr>
+autocmd FileType javascript vnoremap <buffer> <leader>c :norm I//<cr>
+autocmd FileType typescript vnoremap <buffer> <leader>c :norm I//<cr>
+autocmd FileType typescript.tsx vnoremap <buffer> <leader>c :norm I//<cr>
+autocmd FileType python     vnoremap <buffer> <leader>c :norm I#<cr>
 
-:autocmd FileType javascript vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
-:autocmd FileType typescript vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
-:autocmd FileType python     vnoremap <buffer> <leader><leader>c :norm ^x<cr>
+autocmd FileType javascript vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
+autocmd FileType typescript.tsx vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
+autocmd FileType python     vnoremap <buffer> <leader><leader>c :norm ^x<cr>
+
+autocmd FileType python call MaybeSem()
+autocmd FileType typescript call MaybeSem()
+autocmd FileType typescript.tsx call MaybeSem()
+
+autocmd FileType python setlocal foldmethod=indent
+autocmd FileType typescript setlocal foldmethod=indent
+autocmd FileType typescript.tsx setlocal foldmethod=indent
+autocmd FileType javascript setlocal foldmethod=indent
+autocmd FileType php setlocal foldmethod=indent
+autocmd FileType html setlocal foldmethod=indent
+autocmd FileType htmldjango setlocal foldmethod=indent
+
+hi tsxTagName ctermfg=63
+hi tsxCloseTagName ctermfg=63
+hi tsxComponentName ctermfg=63
+hi tsxCloseComponentName ctermfg=63
+hi tsxCloseTag ctermfg=63
+hi tsxTag ctermfg=63
+
 
 fun! MaybeSem()
     if exists('b:dontsem')
