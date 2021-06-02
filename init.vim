@@ -51,7 +51,7 @@ colorscheme unicon
 cnoreabbrev sem SemanticHighlight
 cnoreabbrev semr SemanticHighlightRevert
 
-let mapleader = ","
+let mapleader = " "
 
 " https://jonasjacek.github.io/colors/
 
@@ -85,6 +85,12 @@ nmap <Down> <nop>
 map <C-b> :buffers<CR>
 map <C-f> :LAck! -Q ""<left>
 map <C-i> :bn<CR>
+
+vnoremap <leader>y "+y
+nnoremap <leader>p "+p
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 "Easymotion
 nmap s <Plug>(easymotion-overwin-f)
