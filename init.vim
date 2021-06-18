@@ -124,6 +124,9 @@ hi tsxCloseComponentName ctermfg=63
 hi tsxCloseTag ctermfg=63
 hi tsxTag ctermfg=63
 
+hi diffAdded ctermfg=70
+hi diffRemoved ctermfg=88
+
 
 fun! MaybeSem()
     if exists('b:dontsem')
@@ -142,10 +145,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='papercolor'
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
+      \ pumvisible() ? "\<C-n>" :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
