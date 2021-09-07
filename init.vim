@@ -16,8 +16,8 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-fugitive'
 Plug 'easymotion/vim-easymotion'
-Plug 'chrisbra/Colorizer'
 Plug 'Yggdroot/indentLine'
+Plug 'ap/vim-css-color'
 
 
 
