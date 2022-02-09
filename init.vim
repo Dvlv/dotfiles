@@ -1,9 +1,9 @@
 call plug#begin('~/.vim/neovim/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'cloudhead/neovim-fuzzy'
-Plug 'deoplete-plugins/deoplete-jedi'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'deoplete-plugins/deoplete-jedi'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -19,6 +19,12 @@ Plug 'easymotion/vim-easymotion'
 Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-css-color'
 
+" default lsp
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
 
 
 call plug#end()
@@ -63,17 +69,17 @@ let g:semanticGUIColors = ['#800000', '#808000', '#800080', '#008080', '#00005f'
 let g:colorizer_auto_filetype='css,html,scss,sass,less'
 let g:colorizer_startup=0
 
-inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <silent><expr> <c-space> coc#refresh()
 
 nnoremap <C-q> :FuzzyOpen<CR>
 
 "nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> ge <Plug>(coc-diagnostic-next-error)
-nmap <C-s> :call CocAction('jumpDefinition', 'split')<CR>
-nmap <C-t> <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
+"nmap <silent> ge <Plug>(coc-diagnostic-next-error)
+"nmap <C-s> :call CocAction('jumpDefinition', 'split')<CR>
+"nmap <C-t> <Plug>(coc-definition)
 
 nmap - $
 nmap m ]m
@@ -102,20 +108,27 @@ autocmd FileType javascript vnoremap <buffer> <leader>c :norm I//<cr>
 autocmd FileType typescript vnoremap <buffer> <leader>c :norm I//<cr>
 autocmd FileType typescript.tsx vnoremap <buffer> <leader>c :norm I//<cr>
 autocmd FileType python     vnoremap <buffer> <leader>c :norm I#<cr>
+autocmd FileType lua     vnoremap <buffer> <leader>c :norm I--<cr>
 
 autocmd FileType javascript vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
 autocmd FileType typescript.tsx vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
 autocmd FileType python     vnoremap <buffer> <leader><leader>c :norm ^x<cr>
+autocmd FileType lua     vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
 
 autocmd FileType python call MaybeSem()
+autocmd FileType python autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+" autocmd FileType python autocmd BufWritePre <buffer> call CocAction('format')
 
 autocmd FileType python setlocal foldmethod=indent
+autocmd FileType lua setlocal foldmethod=indent
 autocmd FileType typescript setlocal foldmethod=indent
 autocmd FileType typescript.tsx setlocal foldmethod=indent
 autocmd FileType javascript setlocal foldmethod=indent
 autocmd FileType php setlocal foldmethod=indent
 autocmd FileType html setlocal foldmethod=indent
 autocmd FileType htmldjango setlocal foldmethod=indent
+
+autocmd FileType scss setl iskeyword+=@-@
 
 hi tsxTagName ctermfg=63
 hi tsxCloseTagName ctermfg=63
@@ -144,20 +157,25 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='papercolor'
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+"inoremap <silent><expr> <TAB>
+      "\ pumvisible() ? "\<C-n>" :
+      "\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      "\ <SID>check_back_space() ? "\<TAB>" :
+      "\ coc#refresh()
+"
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"
+"function! s:check_back_space() abort
+  "let col = col('.') - 1
+  "return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
+"
+"let g:coc_snippet_next = '<tab>'
+"
+"" Use <c-space> to trigger completion.
+"inoremap <silent><expr> <c-space> coc#refresh()
+"" Symbol renaming.
+"nmap <leader>rn <Plug>(coc-rename)
 
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+luafile /home/Dvlv/.config/nvim/lua/init.lua
