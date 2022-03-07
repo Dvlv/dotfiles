@@ -33,6 +33,7 @@ set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set number
+set relativenumber
 set t_Co=256
 set background=light
 set hidden
@@ -116,6 +117,7 @@ autocmd FileType lua     vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
 
 autocmd FileType python call MaybeSem()
 autocmd FileType python autocmd BufWritePre <buffer> call CocActionAsync('format')
+autocmd FileType htmldjango autocmd BufWritePre <buffer> call CocActionAsync('format')
 
 
 autocmd FileType python setlocal foldmethod=indent
@@ -128,7 +130,6 @@ autocmd FileType html setlocal foldmethod=indent
 autocmd FileType htmldjango setlocal foldmethod=indent
 
 autocmd FileType scss setl iskeyword+=@-@
-autocmd FileType scss set norelativenumber
 
 
 hi tsxTagName ctermfg=63
