@@ -10,14 +10,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-css-color'
 
-" default lsp
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
-Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
-Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
-Plug 'psf/black', { 'branch': 'stable' }
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 call plug#end()
@@ -51,12 +44,45 @@ cnoreabbrev semr SemanticHighlightRevert
 
 let mapleader = " "
 
-" https://jonasjacek.github.io/colors/
+let g:coc_disable_startup_warning = 1
 
 let g:fuzzy_rootcmds = [ ["git", "rev-parse", "--show-toplevel"]]
 
+" https://jonasjacek.github.io/colors/
 let g:semanticTermColors = [1, 2, 3, 5, 6, 17, 19, 22, 24, 28, 30, 34, 52, 54, 58, 59, 60, 64, 66, 70, 88, 91, 98, 100, 102, 107, 125, 129, 136, 142, 170, 178, 181, 205, 242]
 let g:semanticGUIColors = ['#800000', '#808000', '#800080', '#008080', '#00005f', '#005f87', '#0000af', '#008787', '#00af00', '#5f0087', '#5f8700', '#870000', '#8700af', '#875fd7', '#878700', '#87af5f', '#af005f', '#af00ff', '#af8700', '#afaf00', '#d75fd7', '#d7afaf', '#ff5faf']
+
+
+" Coc
+inoremap <silent><expr> <c-space> coc#refresh()
+
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> ge <Plug>(coc-diagnostic-next-error)
+nmap <C-s> :call CocAction('jumpDefinition', 'split')<CR>
+nmap <C-t> <Plug>(coc-definition)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+
+" end Coc
 
 nnoremap <C-q> :FuzzyOpen<CR>
 
@@ -89,7 +115,8 @@ autocmd FileType python     vnoremap <buffer> <leader><leader>c :norm ^x<cr>
 autocmd FileType lua     vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
 
 autocmd FileType python call MaybeSem()
-autocmd FileType python autocmd BufWritePre <buffer> execute ':Black'
+autocmd FileType python autocmd BufWritePre <buffer> call CocActionAsync('format')
+
 
 autocmd FileType python setlocal foldmethod=indent
 autocmd FileType lua setlocal foldmethod=indent
@@ -130,5 +157,3 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='papercolor'
 
 
-
-luafile /home/Dvlv/.config/nvim/lua/init.lua
