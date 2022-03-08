@@ -39,14 +39,27 @@
             "keywords": "#FF6600",
             "comments": "#696969",
             "textMateRules": [
-            {
-                "scope": "constant.language",
-                "settings": {
-                    "foreground": "#000"
+                {
+                    "scope": "constant.language",
+                    "settings": {
+                        "foreground": "#000"
+                    }
                 }
-            }
-        ]
+            ]
         }
     },
-    "semantic-highlighting.highlightClasses": true
+    "semantic-highlighting.highlightClasses": true,
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "g",
+                "e"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        }
+    ],
 }
