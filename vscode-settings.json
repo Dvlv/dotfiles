@@ -1,0 +1,52 @@
+{
+    "workbench.colorTheme": "Default Light+",
+    "semantic-highlighting.highlightGlobals": true,
+    "python.envFile": "${workspaceFolder}/env",
+    "python.experiments.enabled": false,
+    "editor.fontFamily": "'JetBrains Mono', 'monospace', monospace",
+    "editor.fontSize": 16,
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "400",
+    "semantic-highlighting.colors": [
+        "#800000",
+        "#808000",
+        "#800080",
+        "#008080",
+        "#00005f",
+        "#005f87",
+        "#0000af",
+        "#008787",
+        "#00af00",
+        "#5f0087",
+        "#5f8700",
+        "#870000",
+        "#8700af",
+        "#875fd7",
+        "#878700",
+        "#87af5f",
+        "#af005f",
+        "#af00ff",
+        "#af8700",
+        "#afaf00",
+        "#d75fd7",
+        "#d7afaf",
+        "#ff5faf"
+    ],
+    "editor.minimap.enabled": false,
+    "vim.smartRelativeLine": true,
+    "editor.tokenColorCustomizations": {
+        "[Default Light+]": {
+            "keywords": "#FF6600",
+            "comments": "#696969",
+            "textMateRules": [
+            {
+                "scope": "constant.language",
+                "settings": {
+                    "foreground": "#000"
+                }
+            }
+        ]
+        }
+    },
+    "semantic-highlighting.highlightClasses": true
+}
