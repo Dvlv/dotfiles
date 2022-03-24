@@ -50,7 +50,7 @@ let g:coc_disable_startup_warning = 1
 let g:fuzzy_rootcmds = [ ["git", "rev-parse", "--show-toplevel"]]
 
 " https://jonasjacek.github.io/colors/
-let g:semanticTermColors = [1, 2, 3, 5, 6, 17, 19, 22, 24, 28, 30, 34, 52, 54, 58, 59, 60, 64, 66, 70, 88, 91, 98, 100, 102, 107, 125, 129, 136, 142, 170, 178, 181, 205, 242]
+let g:semanticTermColors = [1, 2, 3, 5, 6, 17, 19, 22, 24, 28, 30, 34, 52, 54, 58, 59, 60, 64, 66, 70, 88, 91, 98,  102, 107, 125, 129, 136, 142, 170, 178, 181, 205, 242]
 let g:semanticGUIColors = ['#800000', '#808000', '#800080', '#008080', '#00005f', '#005f87', '#0000af', '#008787', '#00af00', '#5f0087', '#5f8700', '#870000', '#8700af', '#875fd7', '#878700', '#87af5f', '#af005f', '#af00ff', '#af8700', '#afaf00', '#d75fd7', '#d7afaf', '#ff5faf']
 
 
@@ -63,6 +63,7 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <silent> ge <Plug>(coc-diagnostic-next-error)
 nmap <C-s> :call CocAction('jumpDefinition', 'split')<CR>
 nmap <C-t> <Plug>(coc-definition)
+nmap <leader>rn <Plug>(coc-rename)
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -116,8 +117,8 @@ autocmd FileType python     vnoremap <buffer> <leader><leader>c :norm ^x<cr>
 autocmd FileType lua     vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
 
 autocmd FileType python call MaybeSem()
-autocmd FileType python autocmd BufWritePre <buffer> call CocActionAsync('format')
-autocmd FileType htmldjango autocmd BufWritePre <buffer> call CocActionAsync('format')
+autocmd FileType python autocmd BufWritePre <buffer> call CocAction('format')
+autocmd FileType htmldjango autocmd BufWritePre <buffer> call CocAction('format')
 
 
 autocmd FileType python setlocal foldmethod=indent
@@ -147,7 +148,7 @@ fun! MaybeSem()
     if exists('b:dontsem')
         return
     endif
-    if &ft =~ 'markdown\|html\|text'
+    if &ft =~ 'markdown\|html\|text\|sql'
         return
     endif
     SemanticHighlight
