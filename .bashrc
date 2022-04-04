@@ -37,7 +37,7 @@ toolbox_or_not() {
     HN=$(hostname)
     if [ $HN = "toolbox" ]
     then
-	    echo 🔨🔩
+	    echo "🔨🔩\[\033[38;5;094m\]"
     else
 	    echo 💻
     fi
