@@ -29,6 +29,15 @@ unset rc
 # Added by Dvlv
 alias nv=nvim
 
+back() {
+	num=$1
+	for ((c=1; c<=num; c++))
+	do
+	   cd ..
+	done
+}
+
+
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
@@ -37,7 +46,7 @@ toolbox_or_not() {
     HN=$(hostname)
     if [ $HN = "toolbox" ]
     then
-	    echo "🔨🔩\[\033[38;5;094m\]"
+	    echo "🧰\[\033[38;5;094m\]"
     else
 	    echo 💻
     fi
