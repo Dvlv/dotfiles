@@ -37,6 +37,9 @@ back() {
 	done
 }
 
+if [ -d "/home/Dvlv/Stuff/easy-git" ]; then
+	. /home/Dvlv/Stuff/easy-git/bash_completion.sh
+fi
 
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -46,10 +49,37 @@ toolbox_or_not() {
     HN=$(hostname)
     if [ $HN = "toolbox" ]
     then
-	    echo "🧰\[\033[38;5;094m\]"
+	    echo "🧰$(get_toolbox_emoji)\[\033[38;5;094m\]"
     else
 	    echo 💻
     fi
 }
 
+get_toolbox_name() {
+	awk 'match($0, /name=/) {print $0}' /run/.containerenv | awk -F '"' '$0=$2'
+}
+
+get_toolbox_emoji() {
+	TBNAME=$(get_toolbox_name)
+	case $TBNAME in
+
+		brave)
+			echo 🦁
+			;;
+
+		chrome)
+			echo ⚽
+			;;
+
+		guvc)
+			echo 🧘
+			;;
+
+		*)
+			echo 🤷
+			;;
+	esac
+}
+
 export PS1="\[\033[1;37m\]<$(toolbox_or_not):\u|\[\033[32m\]\w\[\033[01;31m\]\$(parse_git_branch)\[\033[97m\]>\[\033[0m\] "
+export EDITOR=nvim
