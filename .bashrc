@@ -28,6 +28,7 @@ unset rc
 
 # Added by Dvlv
 alias nv=nvim
+alias pass="toolbox run -c cli pass"
 
 back() {
 	num=$1
@@ -56,7 +57,7 @@ toolbox_or_not() {
 }
 
 get_toolbox_name() {
-	awk 'match($0, /name=/) {print $0}' /run/.containerenv | awk -F '"' '$0=$2'
+	sed -nr 's/^name="(.*)"$/\1/p' /run/.containerenv
 }
 
 get_toolbox_emoji() {
@@ -67,12 +68,22 @@ get_toolbox_emoji() {
 			echo 🦁
 			;;
 
+		brave-beta)
+			echo 🦁
+			;;
+
 		chrome)
 			echo ⚽
 			;;
 
 		guvc)
 			echo 🧘
+			;;
+		cdev)
+			echo 🅲
+			;;
+		cli)
+			echo 🖥️
 			;;
 
 		*)
@@ -83,3 +94,4 @@ get_toolbox_emoji() {
 
 export PS1="\[\033[1;37m\]<$(toolbox_or_not):\u|\[\033[32m\]\w\[\033[01;31m\]\$(parse_git_branch)\[\033[97m\]>\[\033[0m\] "
 export EDITOR=nvim
+alias brave="toolbox run -c brave brave-browser"
