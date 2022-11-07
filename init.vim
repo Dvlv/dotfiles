@@ -118,6 +118,7 @@ autocmd FileType lua     vnoremap <buffer> <leader><leader>c :norm ^xx<cr>
 
 autocmd FileType python call MaybeSem()
 autocmd FileType python autocmd BufWritePre <buffer> call CocAction('format')
+autocmd FileType python autocmd BufWritePost <buffer> call MaybeSem()
 autocmd FileType htmldjango autocmd BufWritePre <buffer> call CocAction('format')
 
 
@@ -159,3 +160,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='papercolor'
 
 
+
+let g:clipboard = {
+          \   'name': 'myClipboard',
+          \   'copy': {
+          \      '+': {lines, regtype -> extend(g:, {'foo': [lines, regtype]}) },
+          \      '*': {lines, regtype -> extend(g:, {'foo': [lines, regtype]}) },
+          \    },
+          \   'paste': {
+          \      '+': {-> get(g:, 'foo', [])},
+          \      '*': {-> get(g:, 'foo', [])},
+          \   },
+          \ }
