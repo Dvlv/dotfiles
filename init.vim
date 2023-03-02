@@ -13,6 +13,9 @@ Plug 'ap/vim-css-color'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
+Plug 'github/copilot.vim'
+
+
 call plug#end()
 
 set hidden
@@ -164,6 +167,8 @@ fun! MaybeSem()
     SemanticHighlight
 endfun
 
+command W :w<CR>
+
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='papercolor'
@@ -181,3 +186,7 @@ let g:clipboard = {
           \      '*': {-> get(g:, 'foo', [])},
           \   },
           \ }
+
+" Copilot to Right, not Tab
+ imap <silent><script><expr> <Right> copilot#Accept("\<Right>")
+        let g:copilot_no_tab_map = v:true
