@@ -18,3 +18,5 @@ dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-6 "['<Alt>6']"
 dconf write /org/gnome/desktop/wm/preferences/button-layout "'appmenu:minimize,maximize,close'";
 dconf write /org/gnome/desktop/wm/preferences/focus-mode "'sloppy'";
 dconf write /org/gnome/desktop/wm/preferences/num-workspaces "6";
+
+dconf write /org/gnome/desktop/interface/clock-show-seconds "true"
