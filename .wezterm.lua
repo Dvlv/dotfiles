@@ -12,12 +12,26 @@ for i = 1, 8 do
   })
 end
 
+-- ctrl+shift+t = new tab
 table.insert(config.keys, {
     key = 't',
     mods = 'SHIFT|CTRL',
     action = act.SpawnTab 'CurrentPaneDomain',
 })
 
+-- ctrl+alt+r = new tab right
+table.insert(config.keys, {
+    key = 'r',
+    mods = 'CTRL|ALT',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+})
+
+-- ctrl+alt+d = new tab down
+table.insert(config.keys, {
+    key = 'd',
+    mods = 'CTRL|ALT',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+})
 
 config.font = wezterm.font 'JetBrains Mono'
 config.font_size = 13.0
