@@ -1,9 +1,10 @@
 {
     "suggest.noselect": true,
     "python.formatting.provider": "black",
-    "htmldjango.djlint.enableLint": true,
-    "htmldjango.djlint.lintOnSave": true,
     "coc.preferences.formatOnType": true,
+    "htmldjango.formatting.provider": "djhtml",
+    "htmldjango.djlint.formatJs": true,
+    "htmldjango.djlint.formatCss": true,
     "coc.preferences.formatOnSave": true,
     "emmet.includeLanguages": {"htmldjango": "html", "markdown": "html", "md": "html"},
     "emmet.excludeLanguages":[],
