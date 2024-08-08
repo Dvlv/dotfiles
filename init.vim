@@ -39,6 +39,7 @@ set t_Co=256
 set background=light
 set hidden
 set nomodeline
+set clipboard=unnamedplus
 colorscheme unicon
 
 cnoreabbrev sem SemanticHighlight
@@ -172,16 +173,4 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='papercolor'
 
 
-
-let g:clipboard = {
-          \   'name': 'myClipboard',
-          \   'copy': {
-          \      '+': {lines, regtype -> extend(g:, {'foo': [lines, regtype]}) },
-          \      '*': {lines, regtype -> extend(g:, {'foo': [lines, regtype]}) },
-          \    },
-          \   'paste': {
-          \      '+': {-> get(g:, 'foo', [])},
-          \      '*': {-> get(g:, 'foo', [])},
-          \   },
-          \ }
 
