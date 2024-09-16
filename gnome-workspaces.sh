@@ -20,3 +20,4 @@ dconf write /org/gnome/desktop/wm/preferences/focus-mode "'sloppy'";
 dconf write /org/gnome/desktop/wm/preferences/num-workspaces "6";
 
 dconf write /org/gnome/desktop/interface/clock-show-seconds "true"
+dconf write /org/gnome/desktop/interface/clock-show-weekday "true"
