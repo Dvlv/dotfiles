@@ -108,6 +108,7 @@ nmap <Down> <nop>
 map <C-b> :buffers<CR>
 map <C-f> :LAck! -Q ""<left>
 map <C-i> :bn<CR>
+map <Tab> :bn<CR>
 
 vnoremap <leader>y "+y
 nnoremap <leader>p "+p
